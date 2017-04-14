@@ -14,7 +14,7 @@
 CREATE  DATABASE `과제방`;
 USE `과제방`;
 CREATE TABLE IF NOT EXISTS `실습` (
-	`기업명` VARCHAR(15),
+    `기업명` VARCHAR(15),
     `고용인원` VARCHAR(10),
     `기업형태` VARCHAR(10),
     `기업규모` VARCHAR(10)
@@ -44,7 +44,8 @@ IGNORE 1 LINES;
 
 ## <a name="first"></a>1. 실습 Table에서 고용인원의 평균, 합계를 산출하시오
 ```sql
-SELECT CONCAT(ROUND(AVG(SUBSTRING_INDEX(`고용인원`, '명', 1)), 2), '명') AS '평균', CONCAT(SUM(SUBSTRING_INDEX(`고용인원`, '명', 1)), '명') AS '합계' FROM `실습`;
+SELECT CONCAT(ROUND(AVG(SUBSTRING_INDEX(`고용인원`, '명', 1)), 2), '명') AS '평균',
+CONCAT(SUM(SUBSTRING_INDEX(`고용인원`, '명', 1)), '명') AS '합계' FROM `실습`;
 ```
 
 #### 고용인원 평균, 합계 결과
@@ -114,11 +115,17 @@ SELECT * FROM `실습` WHERE `기업규모` LIKE '소__' AND `고용인원` < 20
 
 ## <a name="fourth"></a>4. 실습 TABLE에서 전체 고용인원이 20 이상 50 미만인 기업을 SELECT 하시오.
 ```sql
-SELECT * FROM `실습` WHERE SUBSTRING_INDEX(`고용인원`, '명', 1) >= 20 && SUBSTRING_INDEX(`고용인원`, '명', 1) < 50;
+SELECT * FROM `실습` WHERE 
+SUBSTRING_INDEX(`고용인원`, '명', 1) >= 20 && 
+SUBSTRING_INDEX(`고용인원`, '명', 1) < 50;
 
-SELECT * FROM `실습` WHERE SUBSTRING_INDEX(`고용인원`, '명', 1) >= 20 AND SUBSTRING_INDEX(`고용인원`, '명', 1) < 50;
+SELECT * FROM `실습` 
+WHERE SUBSTRING_INDEX(`고용인원`, '명', 1) >= 20 AND 
+SUBSTRING_INDEX(`고용인원`, '명', 1) < 50;
 
-SELECT * FROM `실습` WHERE SUBSTRING_INDEX(`고용인원`, '명', 1) BETWEEN 20 AND 49;
+SELECT * FROM `실습` 
+WHERE SUBSTRING_INDEX(`고용인원`, '명', 1) 
+BETWEEN 20 AND 49;
 ```
 
 #### 고용인원 20이상 50미만 결과
